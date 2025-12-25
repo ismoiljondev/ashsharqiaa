@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/next";
+import { NavbarDemo } from "@/components/navbar/navbar";
+import Footer from "@/components/footer/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,11 +35,22 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute={"class"}
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="flex flex-col min-h-screen">
+            <header>
+              <NavbarDemo />
+            </header>
+            <main>
+              {children}
+              <Analytics mode="production" />
+            </main>
+            <footer className="w-full mt-auto">
+              <Footer />
+            </footer>
+          </div>
         </ThemeProvider>
       </body>
     </html>
