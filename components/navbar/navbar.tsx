@@ -2,51 +2,20 @@
 import {
   Navbar,
   NavBody,
-  NavItems,
   MobileNav,
   NavbarLogo,
   NavbarButton,
   MobileNavHeader,
-  MobileNavToggle,
-  MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
-import { useState } from "react";
 import { ModeToggle } from "../mode-toggle";
-import { usePathname } from "next/navigation";
 
 export function NavbarDemo() {
-  const navItems = [
-    {
-      name: "esim",
-      link: "/esim",
-    },
-    {
-      name: "help",
-      link: "/help",
-    },
-    {
-      name: "partnership",
-      link: "/partnership",
-    },
-    {
-      name: "about_us",
-      link: "/about_us",
-    },
-    {
-      name: "contact",
-      link: "/contact",
-    },
-  ];
-
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const param = usePathname();
   return (
     <div className="fixed top-0 z-1000 pt-5 w-full">
       <Navbar className="">
         {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo />
-          <NavItems items={navItems} />
           <div className="flex items-center gap-4">
             <NavbarButton variant="secondary" className="p-0">
               <ModeToggle />
@@ -61,16 +30,16 @@ export function NavbarDemo() {
         <MobileNav>
           <MobileNavHeader>
             <NavbarLogo />
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center mr-4">
               <ModeToggle />
-              <MobileNavToggle
+              {/* <MobileNavToggle
                 isOpen={isMobileMenuOpen}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              />
+              /> */}
             </div>
           </MobileNavHeader>
 
-          <MobileNavMenu
+          {/* <MobileNavMenu
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}
           >
@@ -98,7 +67,7 @@ export function NavbarDemo() {
                 Login
               </NavbarButton>
             </div>
-          </MobileNavMenu>
+          </MobileNavMenu> */}
         </MobileNav>
       </Navbar>
     </div>
